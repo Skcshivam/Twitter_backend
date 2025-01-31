@@ -19,10 +19,13 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true, // Allow credentials (cookies, authorization headers)
 
+const corsOptions = {
+  origin: [
+    "http://localhost:3000", // For local development
+    "https://dazzling-dango-083159.netlify.app", // Your Netlify frontend URL
+  ],
+  credentials: true, // Allow credentials (cookies, authorization headers)
   extended: true,
 };
 app.use(cors(corsOptions));
@@ -37,7 +40,7 @@ app.use("/api/v1/tweet", tweetRoute);
 //   });
 // });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server is listening at port ${PORT}`);

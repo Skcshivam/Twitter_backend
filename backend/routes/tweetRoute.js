@@ -18,3 +18,5 @@ router.route("/allTweets/:id").get(isAuthenticated, getAllTweets);
 router.route("/followingtweets/:id").get(isAuthenticated,getFollowingTweets)
 
 export default router;
+
+
